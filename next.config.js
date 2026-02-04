@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable static site generation for Hostinger shared hosting
-  output: 'export',
   trailingSlash: true,
   typescript: {
     // !! WARN !!
