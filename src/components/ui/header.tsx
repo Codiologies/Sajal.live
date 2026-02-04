@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     Github,
+    Linkedin,
     Instagram,
     X,
     Send as TelegramIcon,
@@ -73,6 +74,9 @@ const Header = () => {
                             <a href="https://github.com/codiologies" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
                                 <Github size={16} strokeWidth={1.5} className="text-white hover:text-blue-400 transition-colors" />
                             </a>
+                            <a href="https://www.linkedin.com/in/sajalgupta2812/" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
+                                <Linkedin size={16} strokeWidth={1.5} className="text-white hover:text-blue-400 transition-colors" />
+                            </a>
                             <a href="https://instagram.com/codiologies" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
                                 <Instagram size={16} strokeWidth={1.5} className="text-white hover:text-blue-400 transition-colors" />
                             </a>
@@ -82,7 +86,7 @@ const Header = () => {
                             <a href="https://telegram.org/codiologies" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
                                 <TelegramIcon size={16} strokeWidth={1.5} className="text-white hover:text-blue-400 transition-colors" />
                             </a>
-                            <a href="https://discord.gg/QTRjdpxFTE" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
+                            <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
                                 <DiscordIcon size={16} strokeWidth={1.5} className="text-white hover:text-blue-400 transition-colors" />
                             </a>
                         </LiquidGlass>
@@ -177,6 +181,12 @@ const Header = () => {
                                         </div>
                                         <span>GitHub</span>
                                     </a>
+                                    <a href="https://www.linkedin.com/in/sajalgupta2812/" target="_blank" className="flex flex-col items-center gap-1 text-white hover:text-blue-400 text-[10px]">
+                                        <div className="bg-zinc-800/50 p-2 rounded-full">
+                                            <Linkedin size={14} strokeWidth={1.5} />
+                                        </div>
+                                        <span>LinkedIn</span>
+                                    </a>
                                     <a href="https://twitter.com/codiologies" target="_blank" className="flex flex-col items-center gap-1 text-white hover:text-blue-400 text-[10px]">
                                         <div className="bg-zinc-800/50 p-2 rounded-full">
                                             <X size={14} strokeWidth={1.5} />
@@ -195,7 +205,7 @@ const Header = () => {
                                         </div>
                                         <span>Telegram</span>
                                     </a>
-                                    <a href="https://discord.gg/QTRjdpxFTE" target="_blank" className="flex flex-col items-center gap-1 text-white hover:text-blue-400 text-[10px]">
+                                    <a href="https://discord.com" target="_blank" className="flex flex-col items-center gap-1 text-white hover:text-blue-400 text-[10px]">
                                         <div className="bg-zinc-800/50 p-2 rounded-full">
                                             <DiscordIcon size={14} strokeWidth={1.5} />
                                         </div>
