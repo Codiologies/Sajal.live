@@ -6,7 +6,7 @@
     "fetch:medium": "node scripts/fetch-medium.js",
     "dev": "npm run fetch:medium && next dev",
     "prebuild": "npm run fetch:medium",
-    "build": "SKIP_TYPE_CHECK=true next build --no-lint",
+    "build": "SKIP_TYPE_CHECK=true next build",
     "build:optimized": "node scripts/build-optimized.js",
     "start": "next start",
     "lint": "next lint",
