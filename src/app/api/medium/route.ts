@@ -1,5 +1,7 @@
 import Parser from 'rss-parser';
 
+export const dynamic = 'force-static';
+export const revalidate = 3600;
 
 const parser = new Parser();
 
