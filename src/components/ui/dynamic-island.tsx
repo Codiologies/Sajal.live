@@ -91,20 +91,77 @@ export const DynamicIsland: React.FC<DynamicIslandProps> = ({
     return () => clearInterval(interval);
   }, []);
   
-  // Fetch location data
+  // Fetch location data with multiple fallback APIs
   const fetchLocation = async () => {
     try {
       setLocationLoading(true);
-      const response = await fetch('https://ipapi.co/json/');
-      const data = await response.json();
       
+      // API 1: ipify + ip-api.com combo
+      try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json');
+        if (ipResponse.ok) {
+          const ipData = await ipResponse.json();
+          const geoResponse = await fetch(`https://ip-api.com/json/${ipData.ip}?fields=status,city,country,query`);
+          const geoData = await geoResponse.json();
+          if (geoData.status === 'success') {
+            setLocationData({
+              ip: geoData.query,
+              city: geoData.city || 'Unknown',
+              country: geoData.country || 'Unknown'
+            });
+            return;
+          }
+        }
+      } catch (err) {
+        console.log('API 1 (ipify + ip-api) failed');
+      }
+      
+      // API 2: ipapi.co
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        if (response.ok) {
+          const data = await response.json();
+          setLocationData({
+            ip: data.ip || '127.0.0.1',
+            city: data.city || 'Unknown',
+            country: data.country_name || 'Unknown'
+          });
+          return;
+        }
+      } catch (err) {
+        console.log('API 2 (ipapi.co) failed');
+      }
+      
+      // API 3: ipgeolocation.io (free API)
+      try {
+        const response = await fetch('https://api.ipgeolocation.io/ipgeo?apiKey=free');
+        if (response.ok) {
+          const data = await response.json();
+          setLocationData({
+            ip: data.ip || '127.0.0.1',
+            city: data.city || 'Unknown',
+            country: data.country_name || 'Unknown'
+          });
+          return;
+        }
+      } catch (err) {
+        console.log('API 3 (ipgeolocation.io) failed');
+      }
+      
+      // All APIs failed, use fallback
       setLocationData({
-        ip: data.ip,
-        city: data.city,
-        country: data.country_name
+        ip: '127.0.0.1',
+        city: 'Localhost',
+        country: 'Local Network'
       });
+      
     } catch (error) {
-      console.error('Failed to fetch location:', error);
+      console.warn('Location fetch failed:', error);
+      setLocationData({
+        ip: '127.0.0.1',
+        city: 'Localhost',
+        country: 'Local Network'
+      });
     } finally {
       setLocationLoading(false);
     }

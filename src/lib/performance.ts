@@ -63,21 +63,6 @@ export const deferNonCriticalResources = () => {
  */
 export const preloadCriticalResources = () => {
   if (typeof window !== 'undefined') {
-    // Preload critical fonts
-    const fontUrls = [
-      '/fonts/inter.woff2',
-    ];
-    
-    fontUrls.forEach(url => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.href = url;
-      link.as = 'font';
-      link.type = 'font/woff2';
-      link.crossOrigin = 'anonymous';
-      document.head.appendChild(link);
-    });
-    
     // Preload critical images
     const criticalImages = [
       '/grid.svg',

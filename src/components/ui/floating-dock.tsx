@@ -351,9 +351,18 @@ function IconContainer({
       e.preventDefault();
     }
   };
+  
+  // Check if the link is external
+  const isExternalLink = href.startsWith('http://') || href.startsWith('https://');
+  
+  const linkProps = isExternalLink 
+    ? { href, target: "_blank", rel: "noopener noreferrer" }
+    : { href, prefetch: true };
+
+  const LinkComponent = isExternalLink ? 'a' : Link;
 
   return (
-      <Link href={href} onClick={handleClick}>
+      <LinkComponent {...linkProps as any} onClick={handleClick}>
         <motion.div
           ref={ref}
         style={{ width, height }}
@@ -418,7 +427,7 @@ function IconContainer({
           <div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse" />
         )}
       </motion.div>
-    </Link>
+    </LinkComponent>
   );
 }
 

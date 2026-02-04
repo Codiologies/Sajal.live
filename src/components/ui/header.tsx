@@ -70,19 +70,19 @@ const Header = () => {
                             intensity="low"
                             className="flex items-center gap-3 px-3 py-1.5"
                         >
-                            <a href="https://github.com/codiologies" target="_blank" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
+                            <a href="https://github.com/codiologies" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
                                 <Github size={16} strokeWidth={1.5} className="text-white hover:text-blue-400 transition-colors" />
                             </a>
-                            <a href="https://instagram.com/codiologies" target="_blank" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
+                            <a href="https://instagram.com/codiologies" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
                                 <Instagram size={16} strokeWidth={1.5} className="text-white hover:text-blue-400 transition-colors" />
                             </a>
-                            <a href="https://twitter.com/codiologies" target="_blank" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
+                            <a href="https://twitter.com/codiologies" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
                                 <X size={16} strokeWidth={1.5} className="text-white hover:text-blue-400 transition-colors" />
                             </a>
-                            <a href="https://telegram.org/codiologies" target="_blank" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
+                            <a href="https://telegram.org/codiologies" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
                                 <TelegramIcon size={16} strokeWidth={1.5} className="text-white hover:text-blue-400 transition-colors" />
                             </a>
-                            <a href="https://discord.gg/QTRjdpxFTE" target="_blank" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
+                            <a href="https://discord.gg/QTRjdpxFTE" target="_blank" rel="noopener noreferrer" className="hover:bg-white/10 rounded-full p-1.5 transition-colors">
                                 <DiscordIcon size={16} strokeWidth={1.5} className="text-white hover:text-blue-400 transition-colors" />
                             </a>
                         </LiquidGlass>

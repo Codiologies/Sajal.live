@@ -8,11 +8,7 @@ const nextConfig = {
     // This is a temporary measure to enable static export despite type errors.
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
-    domains: ['t4.ftcdn.net', 'cdn.sanity.io'],
     remotePatterns: [
       {
         protocol: 'https',

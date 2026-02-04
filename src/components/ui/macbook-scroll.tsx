@@ -56,8 +56,6 @@ export const MacbookScroll = ({
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  console.log(scrollYProgress, "scrollYProgress")
-
   const scaleX = useTransform(
     scrollYProgress,
     [0, 1.3],

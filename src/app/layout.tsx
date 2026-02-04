@@ -124,9 +124,6 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/Sajal_Gupta.png" />
         <link rel="preload" as="image" href="/grid.svg" />
         
-        {/* Critical fonts */}
-        <link rel="preload" as="font" href="/fonts/inter.woff2" type="font/woff2" crossOrigin="anonymous" />
-        
         {/* PWA manifest */}
         <link rel="manifest" href="/manifest.json" />
       </head>
