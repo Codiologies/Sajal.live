@@ -174,7 +174,7 @@ const Page = () => {
                           </div>
                           Send me a Message
                         </h2>
-                        <div className="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-purple-500/10 to-blue-500/10 text-purple-300 border border-purple-500/20 flex items-center gap-1">
+                        <div className="text-xs px-3 py-1 rounded-none bg-gradient-to-r from-purple-500/10 to-blue-500/10 text-purple-300 border border-purple-500/20 flex items-center gap-1">
                           <Sparkles className="w-3 h-3" />
                           Secure
                         </div>
