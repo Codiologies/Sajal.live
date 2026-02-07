@@ -81,7 +81,7 @@ const Page = () => {
 
       <div className="relative z-10 min-h-screen flex flex-col">
         {/* Header Section */}
-        <div className="w-full flex justify-center pt-16 pb-12">
+        <div className="w-full flex justify-center pt-12 pb-8">
           <div className="max-w-6xl w-full px-4 sm:px-6">
             <div className="text-center mb-8 flex flex-col justify-center items-center">
               {/* Icon */}
@@ -106,7 +106,7 @@ const Page = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent"
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent"
               >
                 Get in Touch
               </motion.h1>
@@ -116,7 +116,7 @@ const Page = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-6 text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed"
+                className="mt-4 text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed"
               >
                 Have a question, project idea, or want to collaborate? I'd love to hear from you. Let's create something amazing together.
               </motion.p>
@@ -166,7 +166,7 @@ const Page = () => {
                     <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-purple-500" />
                     
                     {/* Header */}
-                    <div className="px-6 sm:px-8 py-6 border-b border-zinc-700/30 bg-gradient-to-r from-zinc-900/50 to-zinc-800/30">
+                    <div className="px-6 sm:px-8 py-5 border-b border-zinc-700/30 bg-gradient-to-r from-zinc-900/50 to-zinc-800/30">
                       <div className="flex items-center justify-between">
                         <h2 className="text-xl sm:text-2xl font-bold text-white flex items-center gap-3">
                           <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/30">
@@ -182,7 +182,7 @@ const Page = () => {
                     </div>
 
                     {/* Form */}
-                    <form onSubmit={handleSubmit} className="p-6 sm:p-8">
+                    <form onSubmit={handleSubmit} className="p-5 sm:p-7">
                       {error && (
                         <motion.div
                           initial={{ opacity: 0, y: -10 }}
