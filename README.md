@@ -1,5 +1,7 @@
 # Shared Hosting Deployment Instructions
 
+Note: Updated February 2026.
+
 ## Upload Steps:
 1. Upload all files from this folder to your hosting's public_html directory
 2. Make sure .htaccess file is uploaded (enable "Show hidden files" in file manager)
