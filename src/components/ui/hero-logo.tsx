@@ -77,11 +77,16 @@ const HeroLogos = ({ logos }: HeroLogoProps) => {
             height: logo?.height,
             src: logo.src,
             alt: logo.alt,
-            className: `absolute transform-gpu ${isClient ? 'opacity-0' : ''}`,
             style: {
               animationDelay: isClient ? `${delays[index] * 300}ms` : undefined,
             },
           };
+          const imageClassName = cn(
+            "absolute transform-gpu",
+            isClient && "opacity-0",
+            isClient && "followPath",
+            index % 3 === 0 && "twinkle",
+          );
           return (
             <div
               key={`${logo.alt}-${index}`}
@@ -98,7 +103,7 @@ const HeroLogos = ({ logos }: HeroLogoProps) => {
                 <img 
                   {...imageProps} 
                   alt={imageProps.alt} 
-                  className={`${imageProps.className} ${isClient ? 'followPath' : ''} ${index % 3 === 0 ? 'twinkle' : ''}`}
+                  className={imageClassName}
                   width={mobileWidth}
                   height={mobileHeight}
                   style={{
@@ -121,6 +126,7 @@ const HeroLogos = ({ logos }: HeroLogoProps) => {
                 <img
                   {...imageProps}
                   alt={imageProps.alt}
+                  className={imageClassName}
                   width={mobileWidth}
                   height={mobileHeight}
                   style={{
