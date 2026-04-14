@@ -40,7 +40,9 @@ const defaultBrandColors: Record<string, string> = {
   'Rapyd': '#FF2D55',
   'Tesla': '#CC0000',
   'Trip Advisor': '#00A95C',
-  'Lovely Professional University': '#6B1E6A'
+  'Lovely Professional University': '#6B1E6A',
+  'Asana': '#FC636B',
+  'IndiGo': '#2E3192'
 };
 
 const LogoMarquee = ({
@@ -157,8 +159,8 @@ const LogoMarquee = ({
                   {/* The actual logo image with special animations */}
                   <motion.img
                     style={{ 
+                      height: `${logoMaxHeight}px`,
                       maxHeight: `${logoMaxHeight}px`,
-                      height: 'auto',
                       maxWidth: '140px',
                       width: 'auto',
                     }}

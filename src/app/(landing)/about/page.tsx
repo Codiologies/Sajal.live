@@ -99,7 +99,7 @@ const AboutPage = () => {
   ];
 
   const stats = [
-    { icon: Award, label: "Years Experience", value: "1.5+", color: "text-blue-400" },
+    { icon: Award, label: "Years Experience", value: "2+", color: "text-blue-400" },
     { icon: Users, label: "Companies Served", value: "1+", color: "text-purple-400" },
     { icon: Target, label: "Vulnerabilities Found", value: "50+", color: "text-green-400" },
     { icon: Globe, label: "Countries Worked", value: "1", color: "text-orange-400" }
@@ -222,7 +222,7 @@ const AboutPage = () => {
               <LiquidGlass variant="clean" intensity="high" rounded="2xl" className="p-8 md:p-12">
                 <div className="space-y-6 text-zinc-300 text-lg leading-relaxed">
                   <p className="text-xl text-zinc-200 font-medium">
-                    A passionate and self-motivated ethical hacking professional with 1.5 years of hands-on experience in cybersecurity and penetration testing.
+                    A passionate and self-motivated ethical hacking professional with 2+ years of hands-on experience in cybersecurity and penetration testing.
                   </p>
                   <p>
                     I specialize in Ethical Hacking, Web Application Security, and Vulnerability Assessment. My focus is on identifying security weaknesses and helping organizations strengthen their defenses against cyber threats. I am dedicated to continuous learning and staying updated with the latest security techniques and tools.

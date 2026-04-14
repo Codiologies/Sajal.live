@@ -101,6 +101,32 @@ const HallOfFame = () => {
       featured: true,
       tags: ['Education'],
       description: 'Lovely Professional University recognized for collaboration with researchers.'
+    },
+    {
+      id: 'asana',
+      name: 'Asana',
+      logo: '/logos/hof/asana.jpg',
+      category: 'tech',
+      tier: 'gold',
+      year: 2025,
+      vulnerabilities: 1,
+      url: '',
+      featured: true,
+      tags: ['Security Research'],
+      description: 'Asana recognized for responsible disclosure and security collaboration.'
+    },
+    {
+      id: 'indigo',
+      name: 'IndiGo',
+      logo: '/logos/hof/indigo.png',
+      category: 'other',
+      tier: 'silver',
+      year: 2025,
+      vulnerabilities: 1,
+      url: '',
+      featured: true,
+      tags: ['Security Research'],
+      description: 'IndiGo recognized for supporting responsible security disclosures.'
     }
   ];
 

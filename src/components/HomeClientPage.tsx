@@ -111,7 +111,7 @@ const HomeClientPage = () => {
   }, []);
 
   const achievements = [
-    { icon: Award, label: "Hall of Fame", target: 5 },
+    { icon: Award, label: "Hall of Fame", target: 7 },
     { icon: BugIcon, label: "Bugs Reported", target: 50 },
     { icon: Briefcase, label: "Projects", target: 10 }
   ];
@@ -146,6 +146,18 @@ const HomeClientPage = () => {
       avatar: "/logos/hof/lpu.png",
       name: 'Dr. Vinay Anand ',
       position: 'Division of Infotech  @ Lovely Professional University'
+    },
+    {
+      message: 'Thank you for the clear, responsible disclosure and the thorough technical details. Your findings helped us validate our security controls quickly, and your collaboration made remediation smooth and efficient. We appreciate your professionalism and commitment to keeping users safe.',
+      avatar: "/logos/hof/asana.jpg",
+      name: 'Sean Cassidy',
+      position: 'Head of Security @ Asana'
+    },
+    {
+      message: 'We value your proactive security research and the careful way you coordinated the disclosure. Your report was well-structured, actionable, and helped our team address the issue promptly. Thank you for contributing to a safer experience for our customers.',
+      avatar: "/logos/hof/indigo.png",
+      name: 'Arvind Bhandari',
+      position: 'Chief Security Officer @ IndiGo'
     },
   ];
 
@@ -301,7 +313,9 @@ const HomeClientPage = () => {
     { name: 'Rapyd', file: 'rapyd.png', maxHeight: 48, url: '', brandColor: '#FF2D55' },
     { name: 'Tesla', file: 'tesla.png', maxHeight: 48, url: '', brandColor: '#CC0000' },
     { name: 'Trip Advisor', file: 'tripadvisor.png', maxHeight: 48, url: '', brandColor: '#00A95C' },
-    { name: 'Lovely Professional University', file: 'lpu.png', maxHeight: 48, url: '', brandColor: '#6B1E6A' }
+    { name: 'Lovely Professional University', file: 'lpu.png', maxHeight: 48, url: '', brandColor: '#6B1E6A' },
+    { name: 'Asana', file: 'asana.jpg', maxHeight: 48, url: '', brandColor: '#FC636B' },
+    { name: 'IndiGo', file: 'indigo.png', maxHeight: 48, url: '', brandColor: '#2E3192' }
   ];
 
   const [isMounted, setIsMounted] = useState(false);

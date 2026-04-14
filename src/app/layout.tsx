@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     }
   },
   icons: {
-    icon: '/favicon.ico',
-    apple: '/icons/icon-192x192.png',
+    icon: '/Sajal_Gupta.png',
+    apple: '/Sajal_Gupta.png',
   },
   openGraph: {
     type: 'website',

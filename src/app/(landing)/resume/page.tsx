@@ -21,6 +21,12 @@ import { Meteors } from '@/components/ui/meteors';
 import AnimatedPhone from '@/components/ui/animated-phone';
 import LiquidGlass from '@/components/ui/liquid-glass';
 
+import lpuLogo from '../../../../education/lpu.png';
+import teresaLogo from '../../../../education/teresa.png';
+import bugcrowdLogo from '../../../../education/bugcrowd.png';
+import hackeroneLogo from '../../../../education/hackerone.png';
+import wijungleLogo from '../../../../education/wijungle.png';
+
 
 // Simple loading component for suspense fallbacks
 const LoadingPlaceholder = () => (
@@ -33,6 +39,7 @@ const experiences = [
     year: "Nov 2025 - Present", 
     title: "Penetration Tester (Red Team)", 
     company: "WiJungle", 
+    logo: wijungleLogo,
     description: "Conducting comprehensive penetration testing and security assessments on web applications, networks, and infrastructure. Identifying vulnerabilities, exploiting security weaknesses, and providing detailed remediation recommendations to clients.",
     skills: ["Web App Testing", "Network Penetration Testing", "Vulnerability Analysis", "OWASP Top 10"]
   },
@@ -40,6 +47,7 @@ const experiences = [
     year: "Jun 2025 - Present", 
     title: "Bug Bounty Hunter", 
     company: "Bugcrowd", 
+    logo: bugcrowdLogo,
     description: "Actively participating in bug bounty programs, discovering and reporting security vulnerabilities in web applications and systems. Collaborating with organizations to identify and fix security issues responsibly.",
     skills: ["Vulnerability Discovery", "Security Research", "Web App Security", "Responsible Disclosure"]
   },
@@ -47,6 +55,7 @@ const experiences = [
     year: "Jun 2025 - Present", 
     title: "Bug Bounty Hunter", 
     company: "HackerOne", 
+    logo: hackeroneLogo,
     description: "Hunting for security vulnerabilities across diverse applications and platforms. Specialized in identifying critical security flaws in web applications, APIs, and infrastructure. Providing clear documentation for bug remediation.",
     skills: ["Security Testing", "Vulnerability Assessment", "API Security", "Bug Analysis"]
   }
@@ -65,6 +74,7 @@ const Resume = () => {
   const education = [
     {
       institution: "Lovely Professional University",
+      logo: lpuLogo,
       degree: "Bachelor of Technology",
       field: "Computer Science",
       period: "2022 - 2026",
@@ -74,6 +84,7 @@ const Resume = () => {
     },
     {
       institution: "St Teresa Sr. Sec  School",
+      logo: teresaLogo,
       degree: "High School",
       field: "Science & Mathematics",
       period: "2020 - 2022",
@@ -224,7 +235,7 @@ const Resume = () => {
   ];
 
   const stats = [
-    { icon: Award, label: "Years Experience", value: "1.5+" },
+    { icon: Award, label: "Years Experience", value: "2+" },
     { icon: Target, label: "Vulnerabilities Found", value: "50+" },
     { icon: Users, label: "Companies Served", value: "1+" },
     { icon: Globe, label: "Countries Worked", value: "1" }
@@ -271,7 +282,7 @@ const Resume = () => {
             >
               <LiquidGlass variant="card" intensity="medium" rounded="2xl" className="p-8">
                 <p className="text-xl md:text-2xl text-gray-300 leading-relaxed">
-                  1.5+ years of hands-on ethical hacking and penetration testing expertise
+                  2+ years of hands-on ethical hacking and penetration testing expertise
                 </p>
                 
                 {/* Animated subtitle badges */}
@@ -373,8 +384,21 @@ const Resume = () => {
                         <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-white mb-2">{exp.title}</h3>
-                        <div className="text-zinc-200 font-medium mb-4">{exp.company}</div>
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="h-10 w-10 rounded-md bg-zinc-800/80 border border-zinc-700/40 flex items-center justify-center overflow-hidden">
+                            <Image
+                              src={exp.logo}
+                              alt={`${exp.company} logo`}
+                              className="object-contain"
+                              width={32}
+                              height={32}
+                            />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-semibold text-white">{exp.title}</h3>
+                            <div className="text-zinc-200 font-medium">{exp.company}</div>
+                          </div>
+                        </div>
                         <p className="text-zinc-300 leading-relaxed mb-4 text-sm">{exp.description}</p>
                         <div className="flex flex-wrap gap-2">
                           {exp.skills.map((skill, skillIndex) => (
@@ -422,8 +446,21 @@ const Resume = () => {
                         <div className="w-12 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-white mb-2">{edu.degree}</h3>
-                        <div className="text-zinc-200 font-medium mb-2">{edu.institution}</div>
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="h-10 w-10 rounded-md bg-zinc-800/80 border border-zinc-700/40 flex items-center justify-center overflow-hidden">
+                            <Image
+                              src={edu.logo}
+                              alt={`${edu.institution} logo`}
+                              className="object-contain"
+                              width={32}
+                              height={32}
+                            />
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-semibold text-white">{edu.degree}</h3>
+                            <div className="text-zinc-200 font-medium">{edu.institution}</div>
+                          </div>
+                        </div>
                         <div className="text-sm text-zinc-400 mb-4">{edu.field} • GPA: {edu.gpa}</div>
                         <p className="text-zinc-300 text-sm mb-4">{edu.location}</p>
                         
