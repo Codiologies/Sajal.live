@@ -40,7 +40,7 @@ const Header = () => {
                     morphOnHover={false} 
                     intensity="low" 
                     rounded="none"
-                    className="text-white flex justify-between items-center px-6 py-2 relative border-b border-white/10"
+                    className="text-white flex justify-between items-center px-6 pb-2 pt-[calc(env(safe-area-inset-top)+0.5rem)] relative border-b border-white/10"
                 >
                     {/* Signature Logo */}
                     <div className="flex items-center">
@@ -129,47 +129,6 @@ const Header = () => {
                                     <CloseX size={18} strokeWidth={1.5} />
                                 </button>
                             </div>
-
-                            {/* Navigation Links */}
-                            <nav className="mb-6">
-                                <ul className="space-y-3">
-                                    <li>
-                                        <Link href="/" className="text-white hover:text-blue-400 block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                                            Home
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/about" className="text-white hover:text-blue-400 block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                                            About Me
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/blog" className="text-white hover:text-blue-400 block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                                            Blog
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/resume" className="text-white hover:text-blue-400 block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                                            Resume
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/resources/cors-poc-generator" className="text-white hover:text-blue-400 block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                                            CORS POC Generator
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/methodology" className="text-white hover:text-blue-400 block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                                            Interactive Methodology
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/contact" className="text-white hover:text-blue-400 block py-1 text-sm" onClick={() => setMobileMenuOpen(false)}>
-                                            Contact
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </nav>
 
                             {/* Social Links */}
                             <div className="border-t border-zinc-800/50 pt-4">

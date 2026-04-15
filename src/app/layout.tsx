@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
@@ -11,6 +11,12 @@ const inter = Inter({
 });
 
 const GA_TRACKING_ID = 'G-91KCWFBS21';
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   title: "SAJAL GUPTA | Security Researcher | Bug Hunter",

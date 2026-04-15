@@ -18,6 +18,9 @@ const CookieConsent = () => {
   const acceptCookies = () => {
     if (typeof window !== 'undefined') {
       localStorage.setItem('cookieConsent', 'accepted');
+      window.dispatchEvent(
+        new CustomEvent('cookie-consent-updated', { detail: { accepted: true } })
+      );
     }
     setShowConsent(false);
   };
@@ -25,7 +28,7 @@ const CookieConsent = () => {
   if (!showConsent) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 p-3 sm:bottom-4 sm:left-4 sm:right-auto">
+    <div className="fixed left-0 right-0 z-[60] p-3 pb-[calc(env(safe-area-inset-bottom)+12px)] bottom-[calc(env(safe-area-inset-bottom)+8px)] sm:bottom-4 sm:left-4 sm:right-auto sm:pb-3">
       <LiquidGlass 
         variant="modal" 
         intensity="medium" 
@@ -35,7 +38,7 @@ const CookieConsent = () => {
         <p className="text-xs sm:text-sm text-gray-300 mb-3 sm:mb-4 text-left">
           This website uses cookies to enhance your experience.
         </p>
-        <div className="flex justify-between items-center">
+        <div className="flex flex-row justify-between items-center gap-3">
           <Link 
             href="/privacy-policy" 
             className="text-xs sm:text-sm text-blue-400 hover:text-blue-300 transition-colors"
