@@ -38,6 +38,53 @@ export const FloatingDock = ({
   className?: string;
 }) => {
   const pathname = usePathname() || "";
+  const [showDock, setShowDock] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    const handleConsentUpdate = (event: Event) => {
+      const detail = (event as CustomEvent).detail as { accepted?: boolean } | undefined;
+      if (detail?.accepted) {
+        setShowDock(true);
+      }
+    };
+
+    const handleStorageUpdate = (event: StorageEvent) => {
+      if (event.key === "cookieConsent") {
+        setShowDock(event.newValue === "accepted");
+      }
+    };
+
+    window.addEventListener("cookie-consent-updated", handleConsentUpdate);
+    window.addEventListener("storage", handleStorageUpdate);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("cookie-consent-updated", handleConsentUpdate);
+      window.removeEventListener("storage", handleStorageUpdate);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    if (!isMobile) {
+      setShowDock(true);
+      return;
+    }
+
+    const hasConsent = localStorage.getItem("cookieConsent") === "accepted";
+    setShowDock(hasConsent);
+  }, [isMobile]);
   
   // Create tools dropdown items (for tools button)
   const toolsDropdownItems = [
@@ -124,15 +171,11 @@ export const FloatingDock = ({
     { title: "Github", icon: <GithubLogo size={18} />, href: "https://github.com/codiologies" },
   ];
   
-  // Select a subset of items for the mobile dock
-  const mobileDockItems = [
-    dockItems[0], // Home
-    dockItems[1], // About Me
-    dockItems[3], // Blog
-    dockItems[5], // CORS POC
-    dockItems[8], // Contact
-  ];
+  // Use full list on mobile with horizontal scrolling
+  const mobileDockItems = dockItems;
   
+  if (!showDock) return null;
+
   return (
     <>
       <FloatingDockDesktop
@@ -142,7 +185,7 @@ export const FloatingDock = ({
       />
       <FloatingDockMobile
         items={mobileDockItems}
-        className="md:hidden fixed bottom-4 left-0 right-0 z-[60]"
+        className="md:hidden fixed left-0 right-0 z-[60] bottom-[calc(env(safe-area-inset-bottom)+8px)] pb-[env(safe-area-inset-bottom)]"
         pathname={pathname}
       />
     </>
@@ -174,17 +217,17 @@ const FloatingDockMobile = ({
   };
 
   return (
-    <div className={cn(className)}>
-              <div className="max-w-[280px] mx-auto px-2">
+      <div className={cn(className)}>
+        <div className="mx-auto px-2">
         <LiquidGlass 
           variant="prominent" 
           intensity="high" 
           rounded="full" 
           className="shadow-xl backdrop-blur-3xl bg-black/30 border border-white/20"
         >
-          <div className="flex justify-around items-center py-3 px-4">
+          <div className="flex items-center gap-3 py-3 px-4 overflow-x-auto hide-scrollbar">
             {items.map((item, index) => (
-              <div key={item.title} className="relative">
+              <div key={item.title} className="relative shrink-0">
                 <Link 
                   href={item.href}
                   onClick={(e) => handleClick(e, item)}
