@@ -107,7 +107,7 @@ export default function RootLayout({
               "sameAs": [
                 "https://twitter.com/codiologies",
                 "https://github.com/codiologies",
-                "https://www.linkedin.com/in/shubhamgupta-in/"
+                "https://www.linkedin.com/in/sajalgupta2812/"
               ],
               "knowsAbout": ["Cybersecurity", "Penetration Testing", "Bug Bounty", "Security Research", "Ethical Hacking"]
             }

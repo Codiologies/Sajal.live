@@ -111,8 +111,8 @@ const HomeClientPage = () => {
   }, []);
 
   const achievements = [
-    { icon: Award, label: "Hall of Fame", target: 7 },
-    { icon: BugIcon, label: "Bugs Reported", target: 50 },
+    { icon: Award, label: "Hall of Fame", target: 9 },
+    { icon: BugIcon, label: "Bugs Reported", target: 100 },
     { icon: Briefcase, label: "Projects", target: 10 }
   ];
 
@@ -315,7 +315,9 @@ const HomeClientPage = () => {
     { name: 'Trip Advisor', file: 'tripadvisor.png', maxHeight: 48, url: '', brandColor: '#00A95C' },
     { name: 'Lovely Professional University', file: 'lpu.png', maxHeight: 48, url: '', brandColor: '#6B1E6A' },
     { name: 'Asana', file: 'asana.jpg', maxHeight: 48, url: '', brandColor: '#FC636B' },
-    { name: 'IndiGo', file: 'indigo.png', maxHeight: 48, url: '', brandColor: '#2E3192' }
+    { name: 'IndiGo', file: 'indigo.png', maxHeight: 48, url: '', brandColor: '#2E3192' },
+    { name: 'Bisleri', file: 'bisleri.png', maxHeight: 48, url: '', brandColor: '#1B5E20' },
+    { name: 'DoorDash', file: 'doordash.png', maxHeight: 48, url: '', brandColor: '#FF3008' }
   ];
 
   const [isMounted, setIsMounted] = useState(false);

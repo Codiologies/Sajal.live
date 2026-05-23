@@ -101,7 +101,7 @@ const AboutPage = () => {
   const stats = [
     { icon: Award, label: "Years Experience", value: "2+", color: "text-blue-400" },
     { icon: Users, label: "Companies Served", value: "1+", color: "text-purple-400" },
-    { icon: Target, label: "Vulnerabilities Found", value: "50+", color: "text-green-400" },
+    { icon: Target, label: "Vulnerabilities Found", value: "100+", color: "text-green-400" },
     { icon: Globe, label: "Countries Worked", value: "1", color: "text-orange-400" }
   ];
 

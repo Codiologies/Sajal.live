@@ -214,13 +214,13 @@ export default function SplineSceneShowcase() {
                   <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-lg bg-zinc-800/70 backdrop-blur-sm flex items-center justify-center group-hover:bg-blue-900/30 transition-all duration-300">
                     <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-blue-400 group-hover:scale-110 transition-transform duration-300"></div>
                   </div>
-                  <div className="text-zinc-300 text-xs sm:text-sm md:text-base group-hover:text-blue-400 transition-colors duration-300">7+ Hall of Fame recognitions</div>
+                  <div className="text-zinc-300 text-xs sm:text-sm md:text-base group-hover:text-blue-400 transition-colors duration-300">9+ Hall of Fame recognitions</div>
                 </div>
                 <div className="flex items-center space-x-3 sm:space-x-4 group">
                   <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-lg bg-zinc-800/70 backdrop-blur-sm flex items-center justify-center group-hover:bg-green-900/30 transition-all duration-300">
                     <div className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-green-400 group-hover:scale-110 transition-transform duration-300"></div>
                   </div>
-                  <div className="text-zinc-300 text-xs sm:text-sm md:text-base group-hover:text-green-400 transition-colors duration-300">50+ Bugs reported successfully</div>
+                  <div className="text-zinc-300 text-xs sm:text-sm md:text-base group-hover:text-green-400 transition-colors duration-300">100+ Bugs reported successfully</div>
                 </div>
                 <div className="flex items-center space-x-3 sm:space-x-4 group">
                   <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-lg bg-zinc-800/70 backdrop-blur-sm flex items-center justify-center group-hover:bg-purple-900/30 transition-all duration-300">

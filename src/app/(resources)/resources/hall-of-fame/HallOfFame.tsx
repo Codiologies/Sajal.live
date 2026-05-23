@@ -127,6 +127,32 @@ const HallOfFame = () => {
       featured: true,
       tags: ['Security Research'],
       description: 'IndiGo recognized for supporting responsible security disclosures.'
+    },
+    {
+      id: 'bisleri',
+      name: 'Bisleri',
+      logo: '/logos/hof/bisleri.png',
+      category: 'other',
+      tier: 'silver',
+      year: 2025,
+      vulnerabilities: 1,
+      url: '',
+      featured: true,
+      tags: ['Security Research'],
+      description: 'Bisleri recognized for responsible disclosure and security collaboration.'
+    },
+    {
+      id: 'doordash',
+      name: 'DoorDash',
+      logo: '/logos/hof/doordash.png',
+      category: 'platform',
+      tier: 'gold',
+      year: 2025,
+      vulnerabilities: 1,
+      url: '',
+      featured: true,
+      tags: ['Security Research'],
+      description: 'DoorDash recognized for supporting responsible security disclosures.'
     }
   ];
 

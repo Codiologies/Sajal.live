@@ -236,7 +236,7 @@ const Resume = () => {
 
   const stats = [
     { icon: Award, label: "Years Experience", value: "2+" },
-    { icon: Target, label: "Vulnerabilities Found", value: "50+" },
+    { icon: Target, label: "Vulnerabilities Found", value: "100+" },
     { icon: Users, label: "Companies Served", value: "1+" },
     { icon: Globe, label: "Countries Worked", value: "1" }
   ];
