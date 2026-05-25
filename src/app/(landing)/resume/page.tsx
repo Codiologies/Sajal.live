@@ -107,7 +107,7 @@ const Resume = () => {
     { 
       name: "OSCP", 
       description: "Offensive Security Certified Professional", 
-      year: "Coming Soon",
+      year: "2026",
       color: "from-red-500 to-red-600",
       bgColor: "from-red-500/10 to-red-600/5"
     },

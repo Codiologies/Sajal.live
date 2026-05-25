@@ -379,6 +379,19 @@ body {
 }
 
 /* Enhanced testimonial styles */
+.testimonial-message {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .testimonial-message {
+    -webkit-line-clamp: 7;
+  }
+}
+
 .testimonials-swiper .swiper-button-next,
 .testimonials-swiper .swiper-button-prev {
   color: #60a5fa !important;

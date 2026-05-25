@@ -24,6 +24,7 @@ interface LazyTestimonialsProps {
 const LazyTestimonials = ({ testimonials }: LazyTestimonialsProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -106,10 +107,13 @@ const LazyTestimonials = ({ testimonials }: LazyTestimonialsProps) => {
                 }}
                 className='testimonials-swiper'
               >
-                {testimonials.map((testimonial, index) => (
+                {testimonials.map((testimonial, index) => {
+                  const isExpanded = expandedIndex === index;
+
+                  return (
                   <SwiperSlide key={index}>
                     <motion.div 
-                      className="relative bg-zinc-900/40 backdrop-blur-sm border border-zinc-800/50 p-6 sm:p-8 rounded-lg h-auto sm:h-full max-h-[350px] sm:max-h-none overflow-y-auto"
+                      className={`group relative rounded-2xl border border-zinc-800/70 bg-zinc-900/50 p-6 sm:p-7 backdrop-blur-md h-[320px] sm:h-[360px] lg:h-[380px] ${isExpanded ? "overflow-y-auto" : "overflow-hidden"} shadow-[0_12px_30px_rgba(0,0,0,0.35)] before:absolute before:inset-0 before:rounded-2xl before:bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.12),transparent_55%)] before:opacity-0 before:transition-opacity group-hover:before:opacity-100`}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       whileHover={{ 
@@ -130,9 +134,23 @@ const LazyTestimonials = ({ testimonials }: LazyTestimonialsProps) => {
                       
                       <div className="flex flex-col h-full relative z-10">
                         {/* Message with better readability */}
-                        <p className="text-zinc-300 italic mb-6 text-sm sm:text-base pl-4">
+                        <p className={`${isExpanded ? "" : "testimonial-message"} text-zinc-300 italic mb-4 text-sm sm:text-base pl-4 leading-relaxed`}>
                           {testimonial.message}
                         </p>
+
+                        <div className="flex items-center justify-end mb-4">
+                          <button
+                            type="button"
+                            className="text-xs sm:text-sm text-blue-300 hover:text-blue-200 transition-colors"
+                            onClick={(event) => {
+                              event.stopPropagation();
+                              setExpandedIndex(isExpanded ? null : index);
+                            }}
+                            aria-expanded={isExpanded}
+                          >
+                            {isExpanded ? "Show less" : "Read full"}
+                          </button>
+                        </div>
                         
                         {/* Author info with cleaner design */}
                         <div className="flex items-center mt-auto border-t border-zinc-800/50 pt-4">
@@ -153,7 +171,8 @@ const LazyTestimonials = ({ testimonials }: LazyTestimonialsProps) => {
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"></div>
                     </motion.div>
                   </SwiperSlide>
-                ))}
+                );
+                })}
               </Swiper>
             </div>
           ) : (
