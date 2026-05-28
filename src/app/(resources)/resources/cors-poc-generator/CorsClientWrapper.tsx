@@ -51,6 +51,17 @@ const CorsClientWrapper = () => {
     }
   }, [history]);
 
+  const normalizeUrl = (input: string) => {
+    const trimmed = input.trim();
+    if (!trimmed) return null;
+    const candidate = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+    try {
+      return new URL(candidate).toString();
+    } catch {
+      return null;
+    }
+  };
+
   // Function to generate exploit code for the user to copy
   const generateExploitCode = (targetUrl: string) => {
     return `
@@ -120,10 +131,22 @@ const CorsClientWrapper = () => {
   };
 
   const simulateAttack = async () => {
-    if (!url) return;
+    if (!url.trim()) return;
+
+    const formattedUrl = normalizeUrl(url);
+    if (!formattedUrl) {
+      setHistory((prev) => [...prev, "➜ ERROR: Invalid URL."]);
+      setRequestResponse({
+        error: "Invalid URL.",
+        exploitCode: generateExploitCode(url)
+      });
+      setUrl("");
+      return;
+    }
 
     setIsProcessing(true);
-    setHistory((prev) => [...prev, `➜ Scanning ${url}...`]);
+    setHistory((prev) => [...prev, `➜ Normalized URL: ${formattedUrl}`]);
+    setHistory((prev) => [...prev, `➜ Scanning ${formattedUrl}...`]);
     setHistory((prev) => [...prev, `➜ Checking CORS configuration with credentials...`]);
 
     try {
@@ -153,7 +176,7 @@ const CorsClientWrapper = () => {
             resolve({ isVulnerable: false });
           };
 
-          xhr.open('GET', url, true);
+          xhr.open('GET', formattedUrl, true);
           xhr.withCredentials = true;
           xhr.send();
 
@@ -167,7 +190,7 @@ const CorsClientWrapper = () => {
       });
 
       // Let's also do a standard fetch to check headers (but this isn't as accurate as XMLHttpRequest for CORS)
-      const fetchTestPromise = fetch(url, {
+      const fetchTestPromise = fetch(formattedUrl, {
         method: 'GET',
         mode: 'cors',
         credentials: 'omit', // Don't send credentials in this test
@@ -216,11 +239,11 @@ const CorsClientWrapper = () => {
       }
 
       // Generate exploit code for the user
-      const exploitCode = generateExploitCode(url);
+      const exploitCode = generateExploitCode(formattedUrl);
 
       setRequestResponse({
         request: {
-          url,
+          url: formattedUrl,
           method: "GET",
           headers: { "withCredentials": true },
           corsExpectedBehavior: "Browsers block requests with credentials unless server explicitly allows them"
@@ -234,7 +257,7 @@ const CorsClientWrapper = () => {
       setHistory((prev) => [...prev, "➜ ERROR: CORS scan failed."]);
       setRequestResponse({ 
         error: `Failed to test: ${error instanceof Error ? error.message : 'Unknown error'}`,
-        exploitCode: generateExploitCode(url)
+        exploitCode: generateExploitCode(formattedUrl)
       });
     }
     

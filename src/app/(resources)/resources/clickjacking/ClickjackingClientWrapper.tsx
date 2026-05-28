@@ -6,6 +6,17 @@ import { ArrowRight, Terminal, Globe, Info, Bug, MousePointer, CheckCircle, XCir
 import LiquidGlass from "@/components/ui/liquid-glass";
 
 
+type Verdict = "protected" | "vulnerable" | "inconclusive";
+
+type ClickjackingScanResult = {
+  url: string;
+  status: number;
+  xFrameOptions: string | null;
+  frameAncestors: string[] | null;
+  verdict: Verdict;
+  error?: string;
+};
+
 const ClickjackingClientWrapper = () => {
   const [url, setUrl] = useState("");
   const [testUrl, setTestUrl] = useState<string | null>(null);
@@ -13,7 +24,9 @@ const ClickjackingClientWrapper = () => {
   const [history, setHistory] = useState<string[]>([]);
   const terminalRef = useRef<HTMLDivElement>(null);
   const [testComplete, setTestComplete] = useState(false);
-  const [isVulnerable, setIsVulnerable] = useState<boolean | null>(null);
+  const [verdict, setVerdict] = useState<Verdict | null>(null);
+  const [scanResult, setScanResult] = useState<ClickjackingScanResult | null>(null);
+  const [iframeStatus, setIframeStatus] = useState<"loaded" | "error" | null>(null);
 
   useEffect(() => {
     if (terminalRef.current) {
@@ -28,38 +41,105 @@ const ClickjackingClientWrapper = () => {
     return input;
   };
 
-  const testClickjacking = () => {
-    const formattedUrl = formatUrl(url);
+  const testClickjacking = async () => {
+    const formattedUrl = formatUrl(url.trim());
     setIsTesting(true);
     setTestComplete(false);
-    setIsVulnerable(null);
+    setVerdict(null);
+    setScanResult(null);
+    setIframeStatus(null);
     setHistory((prev) => [...prev, `➜ Testing Clickjacking on ${formattedUrl}...`]);
     setTestUrl(formattedUrl);
     setUrl("");
-    
-    setTimeout(() => {
-      setHistory((prev) => [...prev, `➜ Checking X-Frame-Options header...`]);
-      setTimeout(() => {
-        setHistory((prev) => [...prev, `➜ Checking Content-Security-Policy frame-ancestors...`]);
-        setTimeout(() => {
-          setHistory((prev) => [...prev, `➜ Testing iframe load capability...`]);
-          setTimeout(() => {
-            setIsTesting(false);
-            setTestComplete(true);
-          }, 1000);
-        }, 1000);
-      }, 1000);
-    }, 1000);
+
+    setHistory((prev) => [...prev, "➜ Checking X-Frame-Options header..."]);
+
+    try {
+      const response = await fetch(
+        `/api/clickjacking?url=${encodeURIComponent(formattedUrl)}`
+      );
+      const data = (await response.json()) as ClickjackingScanResult;
+
+      if (!response.ok || data.error) {
+        setHistory((prev) => [
+          ...prev,
+          `❌ ERROR: ${data.error || "Header check failed."}`
+        ]);
+        setVerdict("inconclusive");
+        setIsTesting(false);
+        setTestComplete(true);
+        return;
+      }
+
+      setHistory((prev) => [
+        ...prev,
+        data.xFrameOptions
+          ? `➜ X-Frame-Options: ${data.xFrameOptions}`
+          : "➜ X-Frame-Options: not set"
+      ]);
+
+      setHistory((prev) => [
+        ...prev,
+        "➜ Checking Content-Security-Policy frame-ancestors..."
+      ]);
+
+      setHistory((prev) => [
+        ...prev,
+        data.frameAncestors && data.frameAncestors.length > 0
+          ? `➜ CSP frame-ancestors: ${data.frameAncestors.join(" ")}`
+          : "➜ CSP frame-ancestors: not set"
+      ]);
+
+      setHistory((prev) => [...prev, "➜ Testing iframe load capability..."]);
+
+      setScanResult(data);
+
+      if (data.verdict === "protected") {
+        setHistory((prev) => [
+          ...prev,
+          "✅ Result: Target is NOT vulnerable to clickjacking."
+        ]);
+      } else if (data.verdict === "vulnerable") {
+        setHistory((prev) => [
+          ...prev,
+          "⚠️ Result: Target appears VULNERABLE (no frame protections found)."
+        ]);
+      } else {
+        setHistory((prev) => [
+          ...prev,
+          "⚠️ Result: Inconclusive. Could not verify frame protections."
+        ]);
+      }
+
+      setVerdict(data.verdict);
+    } catch (error) {
+      setHistory((prev) => [
+        ...prev,
+        `❌ ERROR: ${error instanceof Error ? error.message : "Request failed."}`
+      ]);
+      setVerdict("inconclusive");
+    } finally {
+      setIsTesting(false);
+      setTestComplete(true);
+    }
   };
 
   const handleIframeLoad = () => {
-    setIsVulnerable(true);
-    setHistory((prev) => [...prev, `✅ Result: Target is VULNERABLE to clickjacking!`]);
+    if (iframeStatus) return;
+    setIframeStatus("loaded");
+    setHistory((prev) => [
+      ...prev,
+      "➜ Iframe load event fired (browser may still block frame access)."
+    ]);
   };
 
   const handleIframeError = () => {
-    setIsVulnerable(false);
-    setHistory((prev) => [...prev, `❌ Result: Target is NOT vulnerable to clickjacking.`]);
+    if (iframeStatus) return;
+    setIframeStatus("error");
+    setHistory((prev) => [
+      ...prev,
+      "➜ Iframe could not be loaded (browser blocked or network error)."
+    ]);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -230,13 +310,26 @@ const ClickjackingClientWrapper = () => {
                 className="font-mono text-sm bg-zinc-950/50 rounded-lg p-4 h-[300px] overflow-y-auto border border-zinc-800/50"
                       >
                         {history.length > 0 ? (
-                          history.map((log, idx) => (
-                            <div key={idx} className={`mb-2 ${
-                              log.includes("✅") ? "text-green-400" : 
-                              log.includes("❌") ? "text-red-400" : 
-                              "text-orange-400"
-                            } drop-shadow-[0_0_2px_rgba(249,115,22,0.3)]`}>{log}</div>
-                          ))
+                          history.map((log, idx) => {
+                            const isSuccess = log.includes("✅");
+                            const isError = log.includes("❌") || log.includes("VULNERABLE");
+                            const textClass = isSuccess
+                              ? "text-green-400"
+                              : isError
+                                ? "text-red-400"
+                                : "text-orange-400";
+                            const glowClass = isSuccess
+                              ? "drop-shadow-[0_0_2px_rgba(74,222,128,0.35)]"
+                              : isError
+                                ? "drop-shadow-[0_0_2px_rgba(248,113,113,0.35)]"
+                                : "drop-shadow-[0_0_2px_rgba(249,115,22,0.3)]";
+
+                            return (
+                              <div key={idx} className={`mb-2 ${textClass} ${glowClass}`}>
+                                {log}
+                              </div>
+                            );
+                          })
                         ) : (
                           <div className="text-zinc-500 italic">Test logs will appear here...</div>
                         )}
@@ -278,17 +371,19 @@ const ClickjackingClientWrapper = () => {
               
               <div className="flex flex-col gap-6">
                 {/* Status Banner */}
-                {isVulnerable !== null && (
+                    {verdict !== null && (
                   <motion.div 
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     className={`w-full py-4 px-6 rounded-xl flex items-center gap-4 ${
-                      isVulnerable 
+                      verdict === "vulnerable" 
                         ? "bg-red-500/20 border border-red-500/30" 
-                        : "bg-green-500/20 border border-green-500/30"
+                        : verdict === "protected"
+                          ? "bg-green-500/20 border border-green-500/30"
+                          : "bg-yellow-500/20 border border-yellow-500/30"
                     }`}
                   >
-                    {isVulnerable ? (
+                    {verdict === "vulnerable" ? (
                       <>
                         <XCircle className="text-red-400 w-8 h-8 flex-shrink-0" />
                         <div>
@@ -296,16 +391,43 @@ const ClickjackingClientWrapper = () => {
                           <p className="text-red-200/80 text-sm">This website can be loaded in an iframe and is potentially vulnerable to clickjacking attacks.</p>
                         </div>
                       </>
-                    ) : (
+                    ) : verdict === "protected" ? (
                       <>
                         <CheckCircle className="text-green-400 w-8 h-8 flex-shrink-0" />
                         <div>
                           <h3 className="text-green-300 font-medium text-lg">Protected Against Clickjacking</h3>
-                          <p className="text-green-200/80 text-sm">This website has proper protections in place to prevent being loaded in an iframe.</p>
+                          <p className="text-green-200/80 text-sm">This website has frame protections in place based on response headers.</p>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <Info className="text-yellow-400 w-8 h-8 flex-shrink-0" />
+                        <div>
+                          <h3 className="text-yellow-300 font-medium text-lg">Result Inconclusive</h3>
+                          <p className="text-yellow-200/80 text-sm">We could not verify frame protections. The target may be blocking header checks.</p>
                         </div>
                       </>
                     )}
                   </motion.div>
+                )}
+
+                {scanResult && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="rounded-xl border border-zinc-800/40 bg-black/40 p-4">
+                      <p className="text-xs uppercase tracking-wide text-zinc-500 mb-2">X-Frame-Options</p>
+                      <p className="text-sm text-zinc-200 font-mono break-words">
+                        {scanResult.xFrameOptions || "Not set"}
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-zinc-800/40 bg-black/40 p-4">
+                      <p className="text-xs uppercase tracking-wide text-zinc-500 mb-2">CSP frame-ancestors</p>
+                      <p className="text-sm text-zinc-200 font-mono break-words">
+                        {scanResult.frameAncestors && scanResult.frameAncestors.length > 0
+                          ? scanResult.frameAncestors.join(" ")
+                          : "Not set"}
+                      </p>
+                    </div>
+                  </div>
                 )}
                 
                 {/* Iframe Test Frame */}
@@ -326,8 +448,8 @@ const ClickjackingClientWrapper = () => {
                   </div>
                   
                   <p className="text-gray-300 mb-4 text-sm">
-                    If the website appears in the frame below, it may be vulnerable to clickjacking attacks. 
-                    Modern browsers may block cross-origin frames, which is a good security practice.
+                    The primary result is based on response headers. The iframe below is a best-effort visual check and
+                    may still show "refused to connect" even when protections are enabled.
                   </p>
                   
                   <div className="bg-black/50 border border-red-500/10 rounded-lg overflow-hidden h-[500px]">

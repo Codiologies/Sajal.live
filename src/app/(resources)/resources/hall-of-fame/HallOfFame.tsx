@@ -121,7 +121,7 @@ const HallOfFame = () => {
       logo: '/logos/hof/indigo.png',
       category: 'other',
       tier: 'silver',
-      year: 2025,
+      year: 2026,
       vulnerabilities: 1,
       url: '',
       featured: true,
@@ -134,7 +134,7 @@ const HallOfFame = () => {
       logo: '/logos/hof/bisleri.png',
       category: 'other',
       tier: 'silver',
-      year: 2025,
+      year: 2026,
       vulnerabilities: 1,
       url: '',
       featured: true,
@@ -147,7 +147,7 @@ const HallOfFame = () => {
       logo: '/logos/hof/doordash.png',
       category: 'platform',
       tier: 'gold',
-      year: 2025,
+      year: 2026,
       vulnerabilities: 1,
       url: '',
       featured: true,
@@ -171,6 +171,8 @@ const HallOfFame = () => {
     const matchesYear = yearFilter === null || company.year === yearFilter;
     return matchesCategory && matchesSearch && matchesYear;
   });
+
+  const filteredFeaturedCompanies = filteredCompanies.filter(company => company.featured);
 
   const years = Array.from(new Set(companies.map(company => company.year))).sort((a, b) => b - a);
 
@@ -316,7 +318,7 @@ const HallOfFame = () => {
           <h2 className="text-2xl md:text-3xl font-bold mb-8">Featured Companies</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {companies.filter(c => c.featured).map((company) => (
+            {filteredFeaturedCompanies.map((company) => (
               <motion.div
                 key={company.id}
                 initial={{ opacity: 0, y: 20 }}
