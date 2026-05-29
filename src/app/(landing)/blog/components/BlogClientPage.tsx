@@ -179,6 +179,7 @@ const BlogClientPage: React.FC = () => {
 
   const featuredPost = posts[0]; // Latest post as featured
   const regularPosts = posts.slice(1);
+  const hasFeaturedImage = Boolean(featuredPost?.mainImage?.asset?.url);
 
   if (loading) {
     return (
@@ -419,9 +420,9 @@ const BlogClientPage: React.FC = () => {
                       rel={featuredPost.link ? "noopener noreferrer" : undefined}
                       className="block"
                     >
-                      <div className="grid lg:grid-cols-2 gap-0">
+                      <div className={hasFeaturedImage ? "grid lg:grid-cols-2 gap-0" : "grid grid-cols-1"}>
                         {/* Image */}
-                        {featuredPost.mainImage?.asset?.url && (
+                        {hasFeaturedImage && (
                           <div className="relative h-64 lg:h-full min-h-[320px] overflow-hidden rounded-l-2xl lg:rounded-l-2xl lg:rounded-r-none">
                             <Image
                               src={featuredPost.mainImage.asset.url}
