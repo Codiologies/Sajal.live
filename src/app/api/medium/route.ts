@@ -1,7 +1,7 @@
 import Parser from 'rss-parser';
 
 export const dynamic = 'force-static';
-export const revalidate = 3600;
+export const revalidate = 1800;
 
 const parser = new Parser();
 
@@ -28,13 +28,19 @@ export async function GET() {
     }));
 
     return new Response(JSON.stringify(items), {
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'public, s-maxage=1800, stale-while-revalidate=60',
+      },
     });
   } catch (err) {
     console.error('Failed to fetch Medium feed', err);
     return new Response(JSON.stringify({ error: 'Failed to fetch Medium feed' }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'public, s-maxage=300, stale-while-revalidate=60',
+      },
     });
   }
 }

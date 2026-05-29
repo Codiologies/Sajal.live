@@ -91,8 +91,8 @@ const BlogClientPage: React.FC = () => {
       try {
         setLoading(true);
 
-        // Fetch Medium posts from the static JSON generated at build-time
-        const res = await fetch('/medium.json');
+        // Fetch Medium posts from the API route (cached with revalidation)
+        const res = await fetch('/api/medium');
         if (!res.ok) {
           throw new Error('Failed to load Medium posts');
         }
