@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const PRIMARY_HOST = "sajal.live";
+const PRIMARY_HOST = "guptasajal.com";
 
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? "";
@@ -23,3 +23,7 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: "/:path*",
 };
+
+
+
+

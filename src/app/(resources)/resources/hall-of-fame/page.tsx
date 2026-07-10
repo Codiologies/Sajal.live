@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Security Hall of Fame | Sajal Gupta',
     description: 'Security acknowledgements from major tech companies for responsible vulnerability disclosure',
-    url: 'https://sajal.live/hall-of-fame',
+    url: 'https://guptasajal.com/hall-of-fame',
     type: 'website',
   },
 };

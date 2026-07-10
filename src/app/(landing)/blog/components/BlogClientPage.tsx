@@ -274,8 +274,8 @@ const BlogClientPage: React.FC = () => {
         <meta name="keywords" content="cybersecurity blog, bug bounty, security research, ethical hacking, penetration testing, vulnerability research" />
         <meta property="og:title" content="Blog - Sajal Gupta | Cybersecurity Insights" />
         <meta property="og:description" content="Latest cybersecurity insights, bug bounty findings, and security research." />
-        <meta property="og:url" content="https://sajal.live/blog" />
-        <meta property="og:image" content="https://sajal.live/og-blog.png" />
+        <meta property="og:url" content="https://guptasajal.com/blog" />
+        <meta property="og:image" content="https://guptasajal.com/og-blog.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@codiologies" />
       </Head>

@@ -10,6 +10,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/private/', '/api/'],
     },
-    sitemap: 'https://sajal.live/sitemap.xml',
+    sitemap: 'https://guptasajal.com/sitemap.xml',
   };
 } 

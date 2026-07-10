@@ -1,4 +1,4 @@
-# sajal.live
+# guptasajal.com
 
 Personal site and portfolio built with Next.js (App Router), React, and Tailwind CSS. Includes landing pages, resources, blog content, and performance-optimized assets.
 

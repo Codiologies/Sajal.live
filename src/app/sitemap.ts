@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 // Set as static for export compatibility
 export const dynamic = 'force-static';
 
-const siteUrl = 'https://sajal.live';
+const siteUrl = 'https://guptasajal.com';
 
 // Main pages of the website
 const routes = [

@@ -38,13 +38,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://sajal.live',
+    url: 'https://guptasajal.com',
     siteName: 'SAJAL GUPTA',
     title: 'SAJAL GUPTA | Security Researcher & Bug Hunter',
     description: 'Security Researcher and Bug Hunter with expertise in penetration testing, bug bounty hunting, and security research.',
     images: [
       {
-        url: 'https://sajal.live/Sajal_Gupta.png',
+        url: 'https://guptasajal.com/Sajal_Gupta.png',
         width: 1200,
         height: 630,
         alt: 'SAJAL GUPTA',
@@ -55,15 +55,15 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SAJAL GUPTA | Security Researcher & Bug Hunter',
     description: 'Security Researcher and Bug Hunter with expertise in penetration testing, bug bounty hunting, and security research.',
-    images: ['https://sajal.live/Sajal_Gupta.png'],
+    images: ['https://guptasajal.com/Sajal_Gupta.png'],
     creator: '@codiologies',
   },
-  metadataBase: new URL("https://sajal.live"),
+  metadataBase: new URL("https://guptasajal.com"),
   alternates: {
-    canonical: 'https://sajal.live',
+    canonical: 'https://guptasajal.com',
   },
   authors: [
-    { name: 'Sajal Gupta', url: 'https://sajal.live' },
+    { name: 'Sajal Gupta', url: 'https://guptasajal.com' },
   ],
   category: 'Cybersecurity',
 };
@@ -100,8 +100,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "Sajal Gupta",
-              "url": "https://sajal.live",
-              "image": "https://sajal.live/Sajal_Gupta.png",
+              "url": "https://guptasajal.com",
+              "image": "https://guptasajal.com/Sajal_Gupta.png",
               "jobTitle": "Security Researcher",
               "description": "Security Researcher and Bug Hunter with expertise in penetration testing, bug bounty hunting, and security research.",
               "sameAs": [

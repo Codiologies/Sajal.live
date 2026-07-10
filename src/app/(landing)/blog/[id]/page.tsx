@@ -39,11 +39,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `Blog Post - ${id} | Sajal Gupta`,
       description: 'Cybersecurity insights and security research.',
-      url: `https://sajal.live/blog/${id}`,
+      url: `https://guptasajal.com/blog/${id}`,
       siteName: 'Sajal Gupta',
       images: [
         {
-          url: 'https://sajal.live/og-blog.png',
+          url: 'https://guptasajal.com/og-blog.png',
           width: 1200,
           height: 630,
           alt: 'Sajal Gupta Blog',
@@ -56,11 +56,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: 'summary_large_image',
       title: `Blog Post - ${id} | Sajal Gupta`,
       description: 'Cybersecurity insights and security research.',
-      images: ['https://sajal.live/og-blog.png'],
+      images: ['https://guptasajal.com/og-blog.png'],
       creator: '@codiologies',
     },
     alternates: {
-      canonical: `https://sajal.live/blog/${id}`,
+      canonical: `https://guptasajal.com/blog/${id}`,
     },
   };
 }

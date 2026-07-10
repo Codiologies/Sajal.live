@@ -95,7 +95,7 @@ export async function GET(request: NextRequest) {
       redirect: "follow",
       signal: controller.signal,
       headers: {
-        "User-Agent": "ClickjackingTester/2026 (+https://sajal.live)"
+        "User-Agent": "ClickjackingTester/2026 (+https://guptasajal.com)"
       }
     });
 

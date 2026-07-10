@@ -964,7 +964,7 @@ const HomeClientPage = () => {
               
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
-                href="https://ctf.sajal.live"
+                href="https://ctf.guptasajal.com"
                 variant="primary"
                 size="lg"
                 isExternal={true}
