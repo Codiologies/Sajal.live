@@ -158,9 +158,9 @@ const AboutPage = () => {
             >
               <LiquidGlass variant="card" intensity="high" rounded="full" className="h-full w-full">
                 <div className="relative h-full w-full rounded-full overflow-hidden">
-                  <Image 
-                    src="/Sajal_Gupta.png" 
-                    alt="SAJAL GUPTA" 
+                  <Image
+                    src="/Sajal_Gupta.webp"
+                    alt="SAJAL GUPTA"
                     fill
                     sizes="192px"
                     className="object-cover"

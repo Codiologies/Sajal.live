@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     }
   },
   icons: {
-    icon: '/Sajal_Gupta.png',
-    apple: '/Sajal_Gupta.png',
+    icon: '/icon-180.png',
+    apple: '/icon-180.png',
   },
   openGraph: {
     type: 'website',
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
     description: 'Security Researcher and Bug Hunter with expertise in penetration testing, bug bounty hunting, and security research.',
     images: [
       {
-        url: 'https://guptasajal.com/Sajal_Gupta.png',
-        width: 1200,
+        url: 'https://guptasajal.com/Sajal_Gupta-og.jpg',
+        width: 630,
         height: 630,
         alt: 'SAJAL GUPTA',
       },
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SAJAL GUPTA | Security Researcher & Bug Hunter',
     description: 'Security Researcher and Bug Hunter with expertise in penetration testing, bug bounty hunting, and security research.',
-    images: ['https://guptasajal.com/Sajal_Gupta.png'],
+    images: ['https://guptasajal.com/Sajal_Gupta-og.jpg'],
     creator: '@codiologies',
   },
   metadataBase: new URL("https://guptasajal.com"),
@@ -101,7 +101,7 @@ export default function RootLayout({
               "@type": "Person",
               "name": "Sajal Gupta",
               "url": "https://guptasajal.com",
-              "image": "https://guptasajal.com/Sajal_Gupta.png",
+              "image": "https://guptasajal.com/Sajal_Gupta-og.jpg",
               "jobTitle": "Security Researcher",
               "description": "Security Researcher and Bug Hunter with expertise in penetration testing, bug bounty hunting, and security research.",
               "sameAs": [
@@ -127,7 +127,7 @@ export default function RootLayout({
         />
         
         {/* Critical images */}
-        <link rel="preload" as="image" href="/Sajal_Gupta.png" />
+        <link rel="preload" as="image" href="/Sajal_Gupta.webp" />
         <link rel="preload" as="image" href="/grid.svg" />
         
         {/* PWA manifest */}

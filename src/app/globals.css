@@ -27,6 +27,45 @@ body {
   font-family: var(--font-family);
 }
 
+/* Pause every descendant CSS animation while a block is scrolled off-screen.
+   Applied by the PauseWhenOffscreen wrapper. Off-screen animations otherwise
+   keep repainting forever and burn CPU/GPU for nothing. */
+.anim-offscreen-paused,
+.anim-offscreen-paused * {
+  animation-play-state: paused !important;
+}
+
+/* Respect the user's OS-level "reduce motion" setting: stop the site's
+   infinite/decorative loops for people who ask for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Mobile GPU relief ---
+   backdrop-filter blur is one of the most expensive things a phone GPU does,
+   and the glass panels use very large radii (24-64px) in many places at once.
+   Cap the blur hard on small screens: on the dark theme there's little bright
+   content behind the panels, so this is barely visible but hugely cheaper. */
+@media (max-width: 768px) {
+  .backdrop-blur-sm,
+  .backdrop-blur,
+  .backdrop-blur-md,
+  .backdrop-blur-lg,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl,
+  .backdrop-blur-3xl {
+    -webkit-backdrop-filter: blur(6px) !important;
+    backdrop-filter: blur(6px) !important;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 4px;
   height: 4px;

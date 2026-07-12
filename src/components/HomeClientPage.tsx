@@ -27,6 +27,7 @@ import { Meteors } from '@/components/ui/meteors';
 
 import LiquidGlass from '@/components/ui/liquid-glass';
 import LogoMarquee from '@/components/ui/logo-marquee';
+import PauseWhenOffscreen from '@/components/ui/PauseWhenOffscreen';
 
 // Optimized lazy loading with preloading
 const CpuArchitecture = React.lazy(() => 
@@ -345,18 +346,22 @@ const HomeClientPage = () => {
         <div className="relative z-10 max-w-5xl w-full px-4">
           <div className="text-center mb-6 sm:mb-12 relative h-[65vh] sm:h-[75vh] md:h-[85vh] flex flex-col justify-center items-center">
             <div className='max-w-lg w-full relative flex flex-col justify-center items-center pt-8 sm:pt-0'>
-              <div className="absolute inset-0 z-0">
+              <PauseWhenOffscreen className="absolute inset-0 z-0">
                 <Meteors number={12} color="rainbow" />
-              </div>
+              </PauseWhenOffscreen>
               
               <HeroLogos logos={[...logos]} />
               <div className="-mt-56 sm:-mt-64 md:-mt-72 flex flex-col items-center">
                 <div className="relative group">
                   <div className="relative overflow-hidden rounded-full border border-white/10 shadow-xl mb-3 w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px]">
-                    <img 
-                      className='w-full h-full object-cover' 
-                      src="/Sajal_Gupta.png" 
-                      alt="SAJAL GUPTA" 
+                    <img
+                      className='w-full h-full object-cover'
+                      src="/Sajal_Gupta.webp"
+                      alt="SAJAL GUPTA"
+                      width={200}
+                      height={200}
+                      fetchPriority="high"
+                      decoding="async"
                     />
                   </div>
                 </div>
@@ -389,8 +394,8 @@ const HomeClientPage = () => {
           <div className="w-full relative bg-gradient-to-b from-black to-zinc-950/95">
             {/* Decorative elements */}
             <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute top-1/4 left-1/4 w-48 h-48 bg-blue-500/5 rounded-full blur-[120px]"></div>
-              <div className="absolute bottom-1/3 right-1/3 w-48 h-48 bg-purple-500/5 rounded-full blur-[120px]"></div>
+              <div className="absolute top-1/4 left-1/4 w-48 h-48 bg-blue-500/5 rounded-full blur-[80px]"></div>
+              <div className="absolute bottom-1/3 right-1/3 w-48 h-48 bg-purple-500/5 rounded-full blur-[80px]"></div>
             </div>
             
             <div className="relative max-w-6xl mx-auto px-2 sm:px-4 py-4 sm:py-6">
@@ -413,16 +418,18 @@ const HomeClientPage = () => {
               </div>
               
               {/* Enhanced LogoMarquee with advanced styling */}
-              <LogoMarquee 
-                logos={hallOfFames}
-                direction="right"
-                pauseOnHover={true}
-                speed={20}
-                gradientWidth={120}
-                gradientColor={'rgba(0,0,0,0.95)'}
-                imagePath={'/logos/hof/'}
-                className="max-w-[100vw] overflow-hidden"
-              />
+              <PauseWhenOffscreen>
+                <LogoMarquee
+                  logos={hallOfFames}
+                  direction="right"
+                  pauseOnHover={true}
+                  speed={20}
+                  gradientWidth={120}
+                  gradientColor={'rgba(0,0,0,0.95)'}
+                  imagePath={'/logos/hof/'}
+                  className="max-w-[100vw] overflow-hidden"
+                />
+              </PauseWhenOffscreen>
               
               {/* View all accolades button */}
               <div className="flex justify-center mt-6">
@@ -483,21 +490,12 @@ const HomeClientPage = () => {
                     <div className="h-12 w-12 rounded-lg bg-zinc-800/70 flex items-center justify-center mb-5 relative">
                       <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-blue-500/10 to-blue-600/5"></div>
                       <achievement.icon className="w-6 h-6 text-blue-400" />
-                      <motion.div 
-                        className="absolute -inset-0.5 rounded-lg opacity-0"
-                        animate={{ 
-                          opacity: [0, 0.3, 0],
-                          scale: [0.8, 1.2, 0.8]
-                        }}
-                        transition={{ 
-                          duration: 3,
-                          repeat: Infinity,
-                          repeatType: "loop"
-                        }}
-                    style={{ 
+                      <div
+                        className="absolute -inset-0.5 rounded-lg opacity-20"
+                        style={{
                           background: 'radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%)'
-                    }} 
-                  />
+                        }}
+                      />
                     </div>
                   
                     {/* Counter with minimal styling */}
@@ -532,16 +530,18 @@ const HomeClientPage = () => {
                 transition={{ duration: 1.2, ease: "easeOut" }}
                 className="overflow-visible"
               >
-                <CpuArchitecture 
-                  className="w-full h-[140px] sm:h-[180px] md:h-[220px] text-zinc-500 hover:text-zinc-300 transition-colors duration-700" 
-                  lineMarkerSize={3} 
-                  fontSize="5"
-                  strokeWidth="0.25"
-                  showCpuConnections={true}
-                  text="CPU"
-                  animateText={true}
-                  showScanEffect={true}
-                />
+                <PauseWhenOffscreen>
+                  <CpuArchitecture
+                    className="w-full h-[140px] sm:h-[180px] md:h-[220px] text-zinc-500 hover:text-zinc-300 transition-colors duration-700"
+                    lineMarkerSize={3}
+                    fontSize="5"
+                    strokeWidth="0.25"
+                    showCpuConnections={true}
+                    text="CPU"
+                    animateText={true}
+                    showScanEffect={true}
+                  />
+                </PauseWhenOffscreen>
               </motion.div>
             </motion.div>
           </div>
@@ -564,8 +564,8 @@ const HomeClientPage = () => {
         <Section paddingY="md" className="mt-4 sm:mt-8 md:mt-16 relative">
           {/* Background elements */}
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/5 rounded-full blur-[100px]"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-purple-500/5 rounded-full blur-[100px]"></div>
+            <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/5 rounded-full blur-[70px]"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-purple-500/5 rounded-full blur-[70px]"></div>
           </div>
           
           <div className="mb-6">

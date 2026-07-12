@@ -303,16 +303,6 @@ export default function SplineSceneShowcase() {
                         ? `${isMobile ? "-left-[110px] -translate-y-1/2" : "-left-40 -translate-y-1/2"}` 
                         : `${isMobile ? "-right-[110px] -translate-y-1/2" : "-right-40 -translate-y-1/2"}`}`}
                       initial={{ rotateX: 15, rotateY: skill.direction === "right" ? -5 : 5 }}
-                      animate={{ 
-                        rotateX: [15, 10, 15],
-                        rotateY: skill.direction === "right" ? [-5, -8, -5] : [5, 8, 5],
-                        z: [-5, 5, -5]
-                      }}
-                      transition={{ 
-                        duration: 4, 
-                        repeat: Infinity,
-                        repeatType: "reverse" 
-                      }}
                     >
                       {/* Enhanced 3D floating card design with mobile optimizations */}
                       <div 
@@ -410,15 +400,6 @@ export default function SplineSceneShowcase() {
                             skill.color === "purple" ? "bg-purple-400" :
                             "bg-red-400"
                           }`}
-                          animate={{ 
-                            opacity: [0.6, 1, 0.6],
-                            scale: activeSkill === skill.id ? [1, 1.4, 1] : [1, 1, 1]
-                          }}
-                          transition={{ 
-                            duration: 1.5,
-                            repeat: Infinity,
-                            repeatType: "reverse"
-                          }}
                           style={{
                             transformStyle: "preserve-3d",
                             transform: "translateZ(6px)"
@@ -434,33 +415,6 @@ export default function SplineSceneShowcase() {
                                 skill.color === "purple" ? "rgba(168, 85, 247, 0.6)" :
                                 "rgba(239, 68, 68, 0.6)"
                               }`
-                            }}
-                            animate={{ 
-                              boxShadow: [
-                                `0 0 ${isMobile ? "4px" : "8px"} ${
-                                  skill.color === "blue" ? "rgba(59, 130, 246, 0.3)" : 
-                                  skill.color === "green" ? "rgba(34, 197, 94, 0.3)" : 
-                                  skill.color === "purple" ? "rgba(168, 85, 247, 0.3)" :
-                                  "rgba(239, 68, 68, 0.3)"
-                                }`,
-                                `0 0 ${isMobile ? "8px" : "16px"} ${
-                                  skill.color === "blue" ? "rgba(59, 130, 246, 0.7)" : 
-                                  skill.color === "green" ? "rgba(34, 197, 94, 0.7)" : 
-                                  skill.color === "purple" ? "rgba(168, 85, 247, 0.7)" :
-                                  "rgba(239, 68, 68, 0.7)"
-                                }`,
-                                `0 0 ${isMobile ? "4px" : "8px"} ${
-                                  skill.color === "blue" ? "rgba(59, 130, 246, 0.3)" : 
-                                  skill.color === "green" ? "rgba(34, 197, 94, 0.3)" : 
-                                  skill.color === "purple" ? "rgba(168, 85, 247, 0.3)" :
-                                  "rgba(239, 68, 68, 0.3)"
-                                }`
-                              ]
-                            }}
-                            transition={{ 
-                              duration: 2,
-                              repeat: Infinity,
-                              repeatType: "reverse"
                             }}
                           />
                           

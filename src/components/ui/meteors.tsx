@@ -13,17 +13,22 @@ export const Meteors = ({
   color?: "blue" | "green" | "purple" | "orange" | "rainbow";
 }) => {
   const [isMounted, setIsMounted] = useState(false);
-  
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     setIsMounted(true);
+    setIsMobile(window.matchMedia('(max-width: 768px)').matches);
   }, []);
-  
+
   // If not mounted (server side), return a placeholder with the same dimensions
   if (!isMounted) {
     return <div className={`relative overflow-hidden pointer-events-none ${className}`} />;
   }
-  
-  const meteors = new Array(number || 20).fill(true);
+
+  // Fewer meteors on phones — each one is an animated element repainting forever.
+  const baseCount = number || 20;
+  const meteorCount = isMobile ? Math.max(4, Math.ceil(baseCount / 2)) : baseCount;
+  const meteors = new Array(meteorCount).fill(true);
   
   // Function to get color based on preference
   const getMeteorColor = (index: number) => {
@@ -56,7 +61,6 @@ export const Meteors = ({
       className="relative overflow-hidden pointer-events-none"
     >
       {meteors.map((_, idx) => {
-        const meteorCount = number || 20;
         // Calculate position to evenly distribute meteors across container width
         const position = idx * (100 / meteorCount);
         // Randomize size for more natural look
