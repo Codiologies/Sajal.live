@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     }
   },
   icons: {
-    icon: '/icon-180.png',
-    apple: '/icon-180.png',
+    icon: '/icon-192.png',
+    apple: '/icon-192.png',
   },
   openGraph: {
     type: 'website',
