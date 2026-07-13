@@ -575,63 +575,388 @@ const HomeClientPage = () => {
           </div>
           
           <div className="flex flex-col items-center">
-            <div className="w-full max-w-5xl relative flex justify-center overflow-hidden">
-              <MacbookScroll
-                title={
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7 }}
-                    className="text-center"
+            <div className="w-full max-w-5xl relative">
+              {/* Left side pointer annotations */}
+              <div className="hidden lg:block absolute left-0 top-1/4 z-20">
+                <div className="relative">
+                  {/* First pointer */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="flex items-start gap-2 mb-20"
                   >
-                    <div className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent mb-3">
-                      Capture The Flag Challenges
-                    </div>
-                    <div className="text-lg text-gray-300">
-                      Test your skills. Learn new techniques. Earn rewards.
-                    </div>
+                    <LiquidGlass variant="subtle" className="p-3 max-w-[200px] border-blue-500/30 shadow-lg shadow-blue-500/10" rounded="lg">
+                      <h4 className="text-blue-400 font-medium text-sm">Learn by Doing</h4>
+                      <p className="text-xs text-gray-300 mt-1">Hands-on experience with real-world security scenarios</p>
+                    </LiquidGlass>
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: 100 }}
+                      transition={{ duration: 0.6, delay: 0.8 }}
+                      className="h-[2px] bg-gradient-to-r from-blue-500/80 to-blue-500/20 mt-6 origin-left"
+                    >
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3, delay: 1.4 }}
+                        className="absolute right-0 top-0 h-2 w-2 rounded-full bg-blue-500 -mt-[3px]"
+                      />
+                    </motion.div>
                   </motion.div>
-                }
-                badge={
-                  <LiquidGlass variant="subtle" className="px-4 py-2" rounded="full" morphOnHover={false}>
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_6px_rgba(34,197,94,0.4)]"></div>
-                      <span className="text-xs text-white font-medium">Coming Soon</span>
+                  
+                  {/* Second pointer */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.8, delay: 1.2 }}
+                    className="flex items-start gap-2 mb-20"
+                  >
+                    <LiquidGlass variant="subtle" className="p-3 max-w-[200px] border-purple-500/30 shadow-lg shadow-purple-500/10" rounded="lg">
+                      <h4 className="text-purple-400 font-medium text-sm">Build Portfolio</h4>
+                      <p className="text-xs text-gray-300 mt-1">Track progress and showcase your achievements to employers</p>
+                    </LiquidGlass>
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: 80 }}
+                      transition={{ duration: 0.6, delay: 1.4 }}
+                      className="h-[2px] bg-gradient-to-r from-purple-500/80 to-purple-500/20 mt-6 origin-left"
+                    >
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3, delay: 2.0 }}
+                        className="absolute right-0 top-0 h-2 w-2 rounded-full bg-purple-500 -mt-[3px]"
+                      />
+                    </motion.div>
+                  </motion.div>
+                  
+                  {/* Third pointer */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.8, delay: 1.8 }}
+                    className="flex items-start gap-2"
+                  >
+                    <LiquidGlass variant="subtle" rounded="lg" className=" p-3 max-w-[200px] border-green-500/30 shadow-lg shadow-green-500/10">
+                      <h4 className="text-green-400 font-medium text-sm">Community Support</h4>
+                      <p className="text-xs text-gray-300 mt-1">Connect with peers and get help from experienced hackers</p>
+                    </LiquidGlass>
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: 120 }}
+                      transition={{ duration: 0.6, delay: 2.0 }}
+                      className="h-[2px] bg-gradient-to-r from-green-500/80 to-green-500/20 mt-6 origin-left"
+                    >
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3, delay: 2.6 }}
+                        className="absolute right-0 top-0 h-2 w-2 rounded-full bg-green-500 -mt-[3px]"
+                      />
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </div>
+              
+              {/* Right side pointer annotations */}
+              <div className="hidden lg:block absolute right-0 top-1/4 z-20">
+                <div className="relative">
+                  {/* First pointer */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.8, delay: 0.9 }}
+                    className="flex items-start gap-2 mb-20 flex-row-reverse"
+                  >
+                    <LiquidGlass variant="subtle" rounded="lg" className=" p-3 max-w-[200px] border-red-500/30 shadow-lg shadow-red-500/10">
+                      <h4 className="text-red-400 font-medium text-sm">Realistic Scenarios</h4>
+                      <p className="text-xs text-gray-300 mt-1">Practice on environments that mirror real-world applications</p>
+                    </LiquidGlass>
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: 100 }}
+                      transition={{ duration: 0.6, delay: 1.1 }}
+                      className="h-[2px] bg-gradient-to-l from-red-500/80 to-red-500/20 mt-6 origin-right"
+                    >
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3, delay: 1.7 }}
+                        className="absolute left-0 top-0 h-2 w-2 rounded-full bg-red-500 -mt-[3px]"
+                      />
+                    </motion.div>
+                  </motion.div>
+                  
+                  {/* Second pointer */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.8, delay: 1.5 }}
+                    className="flex items-start gap-2 mb-20 flex-row-reverse"
+                  >
+                    <LiquidGlass variant="subtle" rounded="lg" className=" p-3 max-w-[200px] border-yellow-500/30 shadow-lg shadow-yellow-500/10">
+                      <h4 className="text-yellow-400 font-medium text-sm">Earn Rewards</h4>
+                      <p className="text-xs text-gray-300 mt-1">Collect points, badges, and certificates as you complete challenges</p>
+                    </LiquidGlass>
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: 80 }}
+                      transition={{ duration: 0.6, delay: 1.7 }}
+                      className="h-[2px] bg-gradient-to-l from-yellow-500/80 to-yellow-500/20 mt-6 origin-right"
+                    >
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3, delay: 2.3 }}
+                        className="absolute left-0 top-0 h-2 w-2 rounded-full bg-yellow-500 -mt-[3px]"
+                      />
+                    </motion.div>
+                  </motion.div>
+                  
+                  {/* Third pointer */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.8, delay: 2.1 }}
+                    className="flex items-start gap-2 flex-row-reverse"
+                  >
+                    <LiquidGlass variant="subtle" rounded="lg" className=" p-3 max-w-[200px] border-cyan-500/30 shadow-lg shadow-cyan-500/10">
+                      <h4 className="text-cyan-400 font-medium text-sm">Level Up Skills</h4>
+                      <p className="text-xs text-gray-300 mt-1">Progressive difficulty to help you grow from beginner to expert</p>
+                    </LiquidGlass>
+                    <motion.div 
+                      initial={{ width: 0 }}
+                      animate={{ width: 120 }}
+                      transition={{ duration: 0.6, delay: 2.3 }}
+                      className="h-[2px] bg-gradient-to-l from-cyan-500/80 to-cyan-500/20 mt-6 origin-right"
+                    >
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.3, delay: 2.9 }}
+                        className="absolute left-0 top-0 h-2 w-2 rounded-full bg-cyan-500 -mt-[3px]"
+                      />
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </div>
+              
+            <MacbookScroll
+              title={
+                    <motion.div 
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.7 }}
+                      className="text-center"
+                    >
+                      <div className="text-2xl md:text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent mb-3">
+                        Capture The Flag Challenges
+                      </div>
+                      <div className="text-lg text-gray-300">
+                        Test your skills. Learn new techniques. Earn rewards.
+                      </div>
+                    </motion.div>
+              }
+              badge={
+                    <LiquidGlass variant="subtle" className="px-4 py-2" rounded="full" morphOnHover={false}>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_6px_rgba(34,197,94,0.4)]"></div>
+                        <span className="text-xs text-white font-medium">Coming Soon</span>
                     </div>
-                  </LiquidGlass>
-                }
-                src="/images/ctf-image.jpg"
+                    </LiquidGlass>
+              }
+              src="/images/ctf-image.jpg"
                 showGradient={true}
               />
-            </div>
-
-            {/* Benefits — responsive grid, aligned at every screen size */}
-            <div className="w-full max-w-5xl mx-auto mt-10 sm:mt-12 px-1">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[
-                  { title: 'Learn by Doing', desc: 'Hands-on experience with real-world security scenarios', dot: 'bg-blue-500', text: 'text-blue-400', border: 'border-blue-500/30', shadow: 'shadow-blue-500/10' },
-                  { title: 'Build Portfolio', desc: 'Track progress and showcase your achievements to employers', dot: 'bg-purple-500', text: 'text-purple-400', border: 'border-purple-500/30', shadow: 'shadow-purple-500/10' },
-                  { title: 'Community Support', desc: 'Connect with peers and get help from experienced hackers', dot: 'bg-green-500', text: 'text-green-400', border: 'border-green-500/30', shadow: 'shadow-green-500/10' },
-                  { title: 'Realistic Scenarios', desc: 'Practice on environments that mirror real-world applications', dot: 'bg-red-500', text: 'text-red-400', border: 'border-red-500/30', shadow: 'shadow-red-500/10' },
-                  { title: 'Earn Rewards', desc: 'Collect points, badges, and certificates as you complete challenges', dot: 'bg-yellow-500', text: 'text-yellow-400', border: 'border-yellow-500/30', shadow: 'shadow-yellow-500/10' },
-                  { title: 'Level Up Skills', desc: 'Progressive difficulty to help you grow from beginner to expert', dot: 'bg-cyan-500', text: 'text-cyan-400', border: 'border-cyan-500/30', shadow: 'shadow-cyan-500/10' },
-                ].map((b, i) => (
-                  <motion.div
-                    key={b.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-40px' }}
-                    transition={{ duration: 0.4, delay: (i % 3) * 0.1 }}
+              
+              {/* Mobile/tablet version of the benefits */}
+              <div className="lg:hidden mt-8 space-y-10">
+                {/* First pointer - Learn by Doing */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ margin: "-50px" }}
+                  transition={{ duration: 0.5 }}
+                  className="relative pl-6"
+                >
+                  <motion.div 
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '100%' }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="absolute left-0 top-0 w-[2px] h-full bg-gradient-to-b from-blue-500/80 to-blue-500/20 origin-top"
                   >
-                    <LiquidGlass variant="subtle" rounded="lg" className={`h-full p-4 border-l-2 ${b.border} shadow-lg ${b.shadow}`}>
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className={`h-2 w-2 rounded-full ${b.dot}`} />
-                        <h4 className={`font-semibold text-sm ${b.text}`}>{b.title}</h4>
-                      </div>
-                      <p className="text-xs text-gray-300 leading-relaxed">{b.desc}</p>
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ margin: "-50px" }}
+                      transition={{ duration: 0.3, delay: 0.8 }}
+                      className="absolute left-0 top-0 h-2 w-2 rounded-full bg-blue-500 -ml-[3px]"
+                    />
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                  >
+                    <LiquidGlass variant="subtle" rounded="lg" className=" p-3 border-blue-500/30 shadow-lg shadow-blue-500/10">
+                    <h4 className="text-blue-400 font-medium text-sm">Learn by Doing</h4>
+                    <p className="text-xs text-gray-300 mt-1">Hands-on experience with real-world security scenarios</p>
                     </LiquidGlass>
                   </motion.div>
-                ))}
+                </motion.div>
+                
+                {/* Second pointer - Build Portfolio */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="relative pl-6"
+                >
+                  <motion.div 
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '100%' }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="absolute left-0 top-0 w-[2px] h-full bg-gradient-to-b from-purple-500/80 to-purple-500/20 origin-top"
+                  >
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ margin: "-50px" }}
+                      transition={{ duration: 0.3, delay: 1.0 }}
+                      className="absolute left-0 top-0 h-2 w-2 rounded-full bg-purple-500 -ml-[3px]"
+                    />
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: 0.7 }}
+                  >
+                    <LiquidGlass variant="subtle" rounded="lg" className=" p-3 border-purple-500/30 shadow-lg shadow-purple-500/10">
+                    <h4 className="text-purple-400 font-medium text-sm">Build Portfolio</h4>
+                    <p className="text-xs text-gray-300 mt-1">Track progress and showcase your achievements to employers</p>
+                    </LiquidGlass>
+                  </motion.div>
+                </motion.div>
+                
+                {/* Third pointer - Realistic Scenarios */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="relative pl-6"
+                >
+                  <motion.div 
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '100%' }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="absolute left-0 top-0 w-[2px] h-full bg-gradient-to-b from-red-500/80 to-red-500/20 origin-top"
+                  >
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ margin: "-50px" }}
+                      transition={{ duration: 0.3, delay: 1.2 }}
+                      className="absolute left-0 top-0 h-2 w-2 rounded-full bg-red-500 -ml-[3px]"
+                    />
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: 0.9 }}
+                  >
+                    <LiquidGlass variant="subtle" rounded="lg" className=" p-3 border-red-500/30 shadow-lg shadow-red-500/10">
+                    <h4 className="text-red-400 font-medium text-sm">Realistic Scenarios</h4>
+                    <p className="text-xs text-gray-300 mt-1">Practice on environments that mirror real-world applications</p>
+                    </LiquidGlass>
+                  </motion.div>
+                </motion.div>
+
+                {/* Fourth pointer - Earn Rewards */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  className="relative pl-6"
+                >
+                  <motion.div 
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '100%' }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
+                    className="absolute left-0 top-0 w-[2px] h-full bg-gradient-to-b from-yellow-500/80 to-yellow-500/20 origin-top"
+                  >
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ margin: "-50px" }}
+                      transition={{ duration: 0.3, delay: 1.4 }}
+                      className="absolute left-0 top-0 h-2 w-2 rounded-full bg-yellow-500 -ml-[3px]"
+                    />
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: 1.1 }}
+                  >
+                    <LiquidGlass variant="subtle" rounded="lg" className=" p-3 border-yellow-500/30 shadow-lg shadow-yellow-500/10">
+                    <h4 className="text-yellow-400 font-medium text-sm">Earn Rewards</h4>
+                    <p className="text-xs text-gray-300 mt-1">Collect points, badges, and certificates as you complete challenges</p>
+                    </LiquidGlass>
+                  </motion.div>
+                </motion.div>
+
+                {/* Fifth pointer - Level Up Skills */}
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  className="relative pl-6"
+                >
+                  <motion.div 
+                    initial={{ height: 0 }}
+                    whileInView={{ height: '100%' }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.6, delay: 1.0 }}
+                    className="absolute left-0 top-0 w-[2px] h-full bg-gradient-to-b from-cyan-500/80 to-cyan-500/20 origin-top"
+                  >
+                    <motion.div 
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ margin: "-50px" }}
+                      transition={{ duration: 0.3, delay: 1.6 }}
+                      className="absolute left-0 top-0 h-2 w-2 rounded-full bg-cyan-500 -ml-[3px]"
+                    />
+                  </motion.div>
+                  <motion.div 
+                    initial={{ opacity: 0, x: 10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ margin: "-50px" }}
+                    transition={{ duration: 0.5, delay: 1.3 }}
+                  >
+                    <LiquidGlass variant="subtle" rounded="lg" className=" p-3 border-cyan-500/30 shadow-lg shadow-cyan-500/10">
+                    <h4 className="text-cyan-400 font-medium text-sm">Level Up Skills</h4>
+                    <p className="text-xs text-gray-300 mt-1">Progressive difficulty to help you grow from beginner to expert</p>
+                    </LiquidGlass>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
             
