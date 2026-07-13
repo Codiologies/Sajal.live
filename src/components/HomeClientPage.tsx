@@ -577,7 +577,7 @@ const HomeClientPage = () => {
           <div className="flex flex-col items-center">
             <div className="w-full max-w-5xl relative">
               {/* Left side pointer annotations */}
-              <div className="hidden lg:block absolute left-0 top-1/4 z-20">
+              <div className="hidden lg:block absolute left-0 top-1/4 z-20 xl:-translate-x-24">
                 <div className="relative">
                   {/* First pointer */}
                   <motion.div 
@@ -663,7 +663,7 @@ const HomeClientPage = () => {
               </div>
               
               {/* Right side pointer annotations */}
-              <div className="hidden lg:block absolute right-0 top-1/4 z-20">
+              <div className="hidden lg:block absolute right-0 top-1/4 z-20 xl:translate-x-24">
                 <div className="relative">
                   {/* First pointer */}
                   <motion.div 
