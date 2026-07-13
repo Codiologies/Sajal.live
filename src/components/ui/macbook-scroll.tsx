@@ -82,11 +82,11 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className={`flex shrink-0 transform flex-col items-center justify-start py-0 [perspective:800px] ${
-        isVerySmallScreen 
-          ? 'scale-[0.3]' 
-          : 'scale-[0.35] xs:scale-[0.4] sm:scale-[0.45] md:scale-50 lg:scale-100'
-      } md:pb-16`}
+      className={`flex shrink-0 origin-top transform flex-col items-center justify-start py-0 [perspective:800px] ${
+        isVerySmallScreen
+          ? 'scale-[0.3] -mb-[380px]'
+          : 'scale-[0.35] -mb-[350px] xs:scale-[0.4] xs:-mb-[320px] sm:scale-[0.45] sm:-mb-[290px] md:scale-50 md:-mb-[250px] lg:scale-100 lg:mb-0'
+      }`}
     >
       <motion.h2
         style={{
