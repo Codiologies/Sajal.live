@@ -597,12 +597,6 @@ const HomeClientPage = () => {
                       transition={{ duration: 0.6, delay: 0.8 }}
                       className="h-[2px] bg-gradient-to-r from-blue-500/80 to-blue-500/20 mt-6 origin-left"
                     >
-                      <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3, delay: 1.4 }}
-                        className="absolute right-0 top-0 h-2 w-2 rounded-full bg-blue-500 -mt-[3px]"
-                      />
                     </motion.div>
                   </motion.div>
                   
@@ -624,12 +618,6 @@ const HomeClientPage = () => {
                       transition={{ duration: 0.6, delay: 1.4 }}
                       className="h-[2px] bg-gradient-to-r from-purple-500/80 to-purple-500/20 mt-6 origin-left"
                     >
-                      <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3, delay: 2.0 }}
-                        className="absolute right-0 top-0 h-2 w-2 rounded-full bg-purple-500 -mt-[3px]"
-                      />
                     </motion.div>
                   </motion.div>
                   
@@ -651,12 +639,6 @@ const HomeClientPage = () => {
                       transition={{ duration: 0.6, delay: 2.0 }}
                       className="h-[2px] bg-gradient-to-r from-green-500/80 to-green-500/20 mt-6 origin-left"
                     >
-                      <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3, delay: 2.6 }}
-                        className="absolute right-0 top-0 h-2 w-2 rounded-full bg-green-500 -mt-[3px]"
-                      />
                     </motion.div>
                   </motion.div>
                 </div>
@@ -683,12 +665,6 @@ const HomeClientPage = () => {
                       transition={{ duration: 0.6, delay: 1.1 }}
                       className="h-[2px] bg-gradient-to-l from-red-500/80 to-red-500/20 mt-6 origin-right"
                     >
-                      <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3, delay: 1.7 }}
-                        className="absolute left-0 top-0 h-2 w-2 rounded-full bg-red-500 -mt-[3px]"
-                      />
                     </motion.div>
                   </motion.div>
                   
@@ -710,12 +686,6 @@ const HomeClientPage = () => {
                       transition={{ duration: 0.6, delay: 1.7 }}
                       className="h-[2px] bg-gradient-to-l from-yellow-500/80 to-yellow-500/20 mt-6 origin-right"
                     >
-                      <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3, delay: 2.3 }}
-                        className="absolute left-0 top-0 h-2 w-2 rounded-full bg-yellow-500 -mt-[3px]"
-                      />
                     </motion.div>
                   </motion.div>
                   
@@ -737,12 +707,6 @@ const HomeClientPage = () => {
                       transition={{ duration: 0.6, delay: 2.3 }}
                       className="h-[2px] bg-gradient-to-l from-cyan-500/80 to-cyan-500/20 mt-6 origin-right"
                     >
-                      <motion.div 
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3, delay: 2.9 }}
-                        className="absolute left-0 top-0 h-2 w-2 rounded-full bg-cyan-500 -mt-[3px]"
-                      />
                     </motion.div>
                   </motion.div>
                 </div>
